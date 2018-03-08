@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+    <definition name="app.welcome" template="/layouts/welcome.jsp">
+        <put-attribute name="title" value="Welcome" />
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+        <put-attribute name="boardControls" value="/WEB-INF/tiles/boardControls.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+    </definition>
+
+    <definition name="app.answer" template="/layouts/answer.jsp">
+        <put-attribute name="title" value="Answer" />
+        <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+        <put-attribute name="boardResult" value="/WEB-INF/tiles/boardResult.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+    </definition>
+
+</tiles-definitions>

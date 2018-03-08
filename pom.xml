@@ -7,12 +7,12 @@
     <groupId>games</groupId>
     <artifactId>sudoku</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-    <!--spring-boot/spring-boot-samples/spring-boot-sample-web-jsp-->
+    <packaging>war</packaging>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -41,14 +41,23 @@
             <!--<scope>provided</scope>-->
         </dependency>
         <dependency>
-            <groupId>org.eclipse.jdt.core.compiler</groupId>
-            <artifactId>ecj</artifactId>
-            <version>4.6.1</version>
-            <scope>provided</scope>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-core</artifactId>
+            <version>3.0.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tiles</groupId>
+            <artifactId>tiles-jsp</artifactId>
+            <version>3.0.8</version>
         </dependency>
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/webapp/WEB-INF</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -56,5 +65,4 @@
             </plugin>
         </plugins>
     </build>
-    <packaging>war</packaging>
 </project>

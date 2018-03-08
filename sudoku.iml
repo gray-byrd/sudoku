@@ -9,6 +9,7 @@
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
+          <root url="file://$MODULE_DIR$/src/main/webapp/WEB-INF" />
         </sourceRoots>
       </configuration>
     </facet>
@@ -24,6 +25,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp/WEB-INF" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -35,8 +37,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:1.5.10.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.1.11" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.1.11" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:log4j-over-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.14.RELEASE" level="project" />
@@ -62,6 +62,19 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:8.5.27" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse.jdt:ecj:3.12.3" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.jdt.core.compiler:ecj:4.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-core:3.0.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-api:3.0.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-api:1.0.6" level="project" />
+    <orderEntry type="library" name="Maven: commons-digester:commons-digester:2.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.3" level="project" />
+    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-jsp:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-servlet:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-servlet:1.0.7" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-template:3.0.8" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-autotag-core-runtime:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-jsp:1.0.7" level="project" />
   </component>
 </module>
