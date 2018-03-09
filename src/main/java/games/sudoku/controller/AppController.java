@@ -19,8 +19,8 @@ public class AppController {
     }
 
     @RequestMapping("/win")
-    public String win(@RequestParam("t1") String t1, @RequestParam("t2") String t2, Model model) {
-        model.addAttribute("result", Integer.parseInt(t1) + Integer.parseInt(t2));
+    public String win(@RequestParam("a1") String a1, @RequestParam("a2") String a2, Model model) {
+        model.addAttribute("result", Integer.parseInt(a1) + Integer.parseInt(a2));
         return "app.win";
     }
 }
