@@ -13,9 +13,14 @@ public class AppController {
         return "app.welcome";
     }
 
-    @RequestMapping("/answer")
-    public String answer(@RequestParam("t1") String t1, @RequestParam("t2") String t2, Model model) {
+    @RequestMapping("/play")
+    public String play() {
+        return "app.play";
+    }
+
+    @RequestMapping("/win")
+    public String win(@RequestParam("t1") String t1, @RequestParam("t2") String t2, Model model) {
         model.addAttribute("result", Integer.parseInt(t1) + Integer.parseInt(t2));
-        return "app.answer";
+        return "app.win";
     }
 }
