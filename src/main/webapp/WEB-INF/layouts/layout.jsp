@@ -11,9 +11,9 @@
         <div class="container">
             <tiles:insertAttribute name="header" />
             <br />
-            <br />
             <tiles:insertAttribute name="body" />
             <br />
+            <tiles:insertAttribute name="controls" />
             <br />
             <tiles:insertAttribute name="footer" />
         </div>
