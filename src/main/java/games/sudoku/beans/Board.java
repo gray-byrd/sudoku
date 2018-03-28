@@ -1,34 +1,24 @@
 package games.sudoku.beans;
 
-import java.util.Arrays;
+import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
+//@Data
 public class Board {
+    private List<String> gameBoard;
 
-    private Integer[][] gameBoard;
-    private Integer[][] solutionBoard;
-
-    public Board(String str) {
-        this.gameBoard = new Integer[9][9];
-        this.solutionBoard = new Integer[9][9];
-        for (int x = 0; x < 9; x++) {
-            for(int y = 0; y < 9; y++) {
-                this.gameBoard[x][y] = Integer.parseInt(str.substring(x*9+y, x*9+y+1));
-                this.solutionBoard[x][y] = Integer.parseInt(str.substring(x*9+y, x*9+y+1));
-            }
-        }
+    public Board(String boardString) {
+        this.gameBoard = new ArrayList<>();
+        boardString.chars().mapToObj(c -> (char)c).forEach(c -> gameBoard.add(c.toString()));
     }
 
-    public int getFromPosition(int x, int y) {
-        return this.gameBoard[x][y];
+    public List<String> getGameBoard() {
+        return gameBoard;
     }
 
-    public void setToPosition(int value, int x, int y) {
-        gameBoard[x][y] = value;
-    }
-
-    public void drawBoard() {
-        for (Integer[] row: this.gameBoard) {
-            System.out.println(Arrays.toString(gameBoard));
-        }
+    public void setGameBoard(List<String> gameBoard) {
+        this.gameBoard = gameBoard;
     }
 }
