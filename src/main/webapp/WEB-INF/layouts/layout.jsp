@@ -8,14 +8,18 @@
         <title><tiles:insertAttribute name="title" /></title>
     </head>
     <body>
-        <div class="container">
-            <tiles:insertAttribute name="header" />
-            <br />
-            <tiles:insertAttribute name="body" />
-            <br />
-            <tiles:insertAttribute name="controls" />
-            <br />
-            <tiles:insertAttribute name="footer" />
+        <div class="page-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <header class="header mb-5">
+                <tiles:insertAttribute name="header" />
+            </header>
+            <main role="main" class="container">
+                <tiles:insertAttribute name="body" />
+                <br/>
+                <tiles:insertAttribute name="controls" />
+            </main>
+            <footer class="footer mt-4">
+                <tiles:insertAttribute name="footer" />
+            </footer>
         </div>
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>

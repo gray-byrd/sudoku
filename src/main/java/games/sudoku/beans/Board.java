@@ -4,21 +4,16 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
-//@Data
+@Data
 public class Board {
-    private List<String> gameBoard;
+    private ArrayList<ArrayList<String>> gameBoard;
 
     public Board(String boardString) {
         this.gameBoard = new ArrayList<>();
-        boardString.chars().mapToObj(c -> (char)c).forEach(c -> gameBoard.add(c.toString()));
-    }
-
-    public List<String> getGameBoard() {
-        return gameBoard;
-    }
-
-    public void setGameBoard(List<String> gameBoard) {
-        this.gameBoard = gameBoard;
+        IntStream.range(0,9).forEach(i -> gameBoard.add(new ArrayList<>()));
+        IntStream.range(0,boardString.length()).forEach(i ->
+            gameBoard.get(i/9).add(boardString.substring(i,++i)));
     }
 }
