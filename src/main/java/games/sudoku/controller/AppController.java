@@ -1,14 +1,15 @@
 package games.sudoku.controller;
 
-import games.sudoku.beans.Board;
+import games.sudoku.beans.Game;
+import games.sudoku.enums.Status;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
+
+    private Game game;
 
     @RequestMapping("/")
     public String welcome() {
@@ -17,11 +18,19 @@ public class AppController {
 
     @RequestMapping("/play")
     public ModelAndView drawBoard() {
-        String boardString = "123456789123456789123456789123456789123456789123456789123456789123456789123456789";
-        Board board = new Board(boardString);
+        if (game == null) { game = new Game(); }
         ModelAndView modelAndView = new ModelAndView("app.play");
-        modelAndView.addObject("board", board.getGameBoard());
+        modelAndView.addObject("board", game.getGameBoard().getBoard());
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/submitmove", method = RequestMethod.POST)
+    public Status submitMove(@RequestParam int row, @RequestParam int col, @RequestParam String value) {
+        if (value.equals(game.getSolvBoard().getValue(row, col))) {
+            game.getGameBoard().setValue(row, col, value);
+            return Status.SUCCESS;
+        }
+        return Status.FAILURE;
     }
 
     @RequestMapping("/win")

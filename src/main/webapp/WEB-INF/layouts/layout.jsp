@@ -14,8 +14,6 @@
             </header>
             <main role="main" class="container">
                 <tiles:insertAttribute name="body" />
-                <br/>
-                <tiles:insertAttribute name="controls" />
             </main>
             <footer class="footer mt-4">
                 <tiles:insertAttribute name="footer" />
