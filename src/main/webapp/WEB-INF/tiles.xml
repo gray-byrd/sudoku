@@ -5,22 +5,22 @@
 
 <tiles-definitions>
 
-    <definition name="layout" template="/WEB-INF/layouts/layout.jsp">
+    <definition name="layout.tile" template="/WEB-INF/layouts/layout.jsp">
         <put-attribute name="title" value="sudoku" />
         <put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
     </definition>
 
-    <definition name="app.welcome" extends="layout" >
+    <definition name="welcome.tile" extends="layout.tile" >
         <put-attribute name="body" value="/WEB-INF/tiles/welcome.jsp" />
     </definition>
 
-    <definition name="app.play" extends="layout" >
-        <put-attribute name="body" value="/WEB-INF/tiles/board.jsp" />
+    <definition name="game.tile" extends="layout.tile" >
+        <put-attribute name="body" value="/WEB-INF/tiles/game.jsp" />
     </definition>
 
-    <definition name="app.win" extends="layout" >
+    <definition name="win.tile" extends="layout.tile" >
         <put-attribute name="body" value="/WEB-INF/tiles/win.jsp" />
     </definition>
 

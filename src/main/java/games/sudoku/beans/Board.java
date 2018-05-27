@@ -12,7 +12,7 @@ public class Board {
     Board() {
         this.board = new ArrayList<>();
         IntStream.range(0,9).forEach(i -> board.add(new ArrayList<>()));
-        IntStream.range(0,81).forEach(i -> board.get(i/9).add("0"));
+        IntStream.range(0,81).forEach(i -> board.get(i/9).add(" "));
     }
 
     Board(String boardString) {
@@ -23,7 +23,7 @@ public class Board {
     }
 
     public void setValue(int row, int col, String value) {
-        board.get(row).set(col, value);
+        board.get(row).set(col,value);
     }
 
     public String getValue(int row, int col) {

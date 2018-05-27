@@ -1,6 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">
-        <img src="" id="header-logo" class="d-inline-block align-top" alt="">
-        sudoku
-    </a>
-</nav>
+<a id="header-logo" href="#">#</a>
+<div id="header-text-frame">
+    <a id="header-text" href="#">sudoku</a>
+</div>
