@@ -1,5 +1,3 @@
 <div id="win-container">
-    <form action="game">
-        <button type="submit">Play Again</button>
-    </form>
+    <a href="/game">Play Again</a>
 </div>

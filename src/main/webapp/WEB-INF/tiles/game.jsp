@@ -4,18 +4,19 @@
     <c:forEach var="row" varStatus="rowNum" items="${board}">
         <div class="btn-group">
             <c:forEach var="square" varStatus="colNum" items="${row}">
-                <button class="board-btn row-${rowNum.index} col-${colNum.index}">
+                <button class="board-btn row-${rowNum.index} col-${colNum.index}"
+                        value="row=${rowNum.index}&col=${colNum.index}">
                         ${square}
                 </button>
             </c:forEach>
         </div>
     </c:forEach>
 </div>
-<br>
 <div id="ctrls-container" class="btn-group">
     <c:forEach var="ctrl" varStatus="ctrlNum" items="${ctrls}">
-        <button class="ctrl-btn ctrl-btn-${ctrlNum.index}">
-                ${ctrl}
+        <button class="ctrl-btn ctrl-btn-${ctrlNum.index}" value="&value=${ctrl}">
+            ${ctrl}
         </button>
     </c:forEach>
 </div>
+<br>

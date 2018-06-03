@@ -5,7 +5,7 @@ body {
     background-color: #bcccdc;
 }
 #main-container {
-    display: inline-table;
+    display: inline-grid;
 }
 #header-container {
     padding: 10px;
@@ -53,15 +53,6 @@ body {
 .btn-group {
     display: inline-flex;
 }
-.board-btn:focus,
-.board-btn:active,
-.ctrl-btn:focus,
-.ctrl-btn:active {
-    outline: none;
-    color: #627181;
-    background-color: #323647;
-    border-color: #323647;
-}
 .board-btn,
 .ctrl-btn {
     font-size: 30px;
@@ -70,6 +61,19 @@ body {
     height: 50px;
     color: #323647;
     background-color: #627181;
+    border-color: #323647;
+}
+.board-btn:focus,
+.board-btn:active,
+.board-btn:target,
+.board-btn.active,
+.ctrl-btn:focus,
+.ctrl-btn:active,
+.ctrl-btn:target,
+.ctrl-btn.active {
+    outline: none;
+    color: #627181;
+    background-color: #323647;
     border-color: #323647;
 }
 .col-2,

@@ -15,17 +15,29 @@ public class AppController {
         return "welcome.tile";
     }
 
-    @RequestMapping("/game")
-    public ModelAndView playGame() {
-        if (game == null) { game = new Game(); }
+    @RequestMapping(value = "/game", method = RequestMethod.GET)
+    public ModelAndView drawGame() {
+        game = new Game();
         ModelAndView modelAndView = new ModelAndView("game.tile");
         modelAndView.addObject("board", game.getGameBoard().getBoard());
         modelAndView.addObject("ctrls", game.getCtrls());
         return modelAndView;
     }
 
-    @RequestMapping("/win")
-    public String win() {
-        return "win.tile";
+    @RequestMapping(value = "/play", method = RequestMethod.GET)
+    public ModelAndView makePlay(@RequestParam(value = "row")String row,
+                                 @RequestParam(value = "col")String col,
+                                 @RequestParam(value = "value")String value) {
+        if (game.getSolvBoard().getValue(Integer.parseInt(row), Integer.parseInt(col)).equals(value)) {
+            game.getGameBoard().setValue(Integer.parseInt(row), Integer.parseInt(col), value);
+        }
+        if (!game.getGameBoard().contains(" ")){
+            ModelAndView modelAndView = new ModelAndView("win.tile");
+            return modelAndView;
+        }
+        ModelAndView modelAndView = new ModelAndView("game.tile");
+        modelAndView.addObject("board", game.getGameBoard().getBoard());
+        modelAndView.addObject("ctrls", game.getCtrls());
+        return modelAndView;
     }
 }
