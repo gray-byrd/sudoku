@@ -4,7 +4,8 @@
     <c:forEach var="row" varStatus="rowNum" items="${board}">
         <div class="btn-group">
             <c:forEach var="square" varStatus="colNum" items="${row}">
-                <button class="board-btn row-${rowNum.index} col-${colNum.index}"
+                <button class="board-btn row-${rowNum.index} col-${colNum.index}
+                        ${square eq selected ? 'highlight' : ''}"
                         value="row=${rowNum.index}&col=${colNum.index}">
                         ${square}
                 </button>
@@ -19,4 +20,3 @@
         </button>
     </c:forEach>
 </div>
-<br>

@@ -1,3 +1,3 @@
 <div id="win-container">
-    <a href="/game">Play Again</a>
+    <a href="/newgame">Play Again</a>
 </div>
