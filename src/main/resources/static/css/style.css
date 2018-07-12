@@ -74,37 +74,57 @@ body {
     box-shadow: inset 0 0 5px 1px #51CBEE;
     /*border: 1px solid #51CBEE;*/
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .col-0.row-0 {
     border-radius: 5px 0 0 0;
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .col-8.row-0 {
     border-radius: 0 5px 0 0;
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .col-8.row-8 {
     border-radius: 0 0 5px 0;
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .col-0.row-8 {
     border-radius: 0 0 0 5px;
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .col-2,
 .col-5 {
     border-right: solid;
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .col-3,
 .col-6 {
     border-left: solid;
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .row-2,
 .row-5 {
     border-bottom: solid;
 }
+
+/*noinspection CssUnusedSymbol,CssUnusedSymbol*/
 .row-3,
 .row-6 {
     border-top: solid;
 }
+
+/*noinspection CssUnusedSymbol*/
 .ctrl-btn-0 {
     border-radius: 5px 0 0 5px;
 }
+
+/*noinspection CssUnusedSymbol*/
 .ctrl-btn-8 {
     border-radius: 0 5px 5px 0;
 }

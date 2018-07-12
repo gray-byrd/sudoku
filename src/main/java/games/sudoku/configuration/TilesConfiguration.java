@@ -1,4 +1,4 @@
-package games.sudoku.config;
+package games.sudoku.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

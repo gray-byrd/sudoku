@@ -1,6 +1,8 @@
 package games.sudoku.controller;
 
-import games.sudoku.beans.Game;
+import games.sudoku.domain.Game;
+import games.sudoku.services.game.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -8,7 +10,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AppController {
 
+    private final GameService service;
     private Game game;
+
+    @Autowired
+    public AppController(GameService service) {
+        this.service = service;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome() {
@@ -17,7 +25,7 @@ public class AppController {
 
     @RequestMapping(value = "/newgame", method = RequestMethod.GET)
     public ModelAndView startNewGame() {
-        game = new Game();
+        game = service.getNextGame();
         return new ModelAndView("redirect:/game");
     }
 
@@ -39,7 +47,7 @@ public class AppController {
         } else {
             game.getGameBoard().setSelected("");
         }
-        return new ModelAndView((!game.getGameBoard().contains(" ")) ? "redirect:/win" : "redirect:/game");
+        return new ModelAndView((game.isGameWon()) ? "redirect:/win" : "redirect:/game");
     }
 
     @RequestMapping(value = "/win", method = RequestMethod.GET)

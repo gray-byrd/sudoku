@@ -13,4 +13,3 @@ $('.ctrl-btn').on('click touchstart', function() {
         window.location.replace("/play?"+ $('.board-btn.active').val() + $(this).val());
     }
 });
-
