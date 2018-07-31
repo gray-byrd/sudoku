@@ -13,7 +13,7 @@ public class GameTest {
     public void isGameWon_CompleteTest() {
         String boardString =
                 "123456789234567891345678912456789123567891234678912345789123456891234567912345678";
-        Game game = new Game(boardString, boardString);
+        Game game = new GameBuilder().setGameBoard(boardString).setSolvBoard(boardString).build();
         assert game.isGameWon();
     }
 
@@ -21,7 +21,7 @@ public class GameTest {
     public void isGameWon_NotCompleteTest() {
         String boardString =
                 "1234567892345678913456789124567891235678912 4678912345789123456891234567912345678";
-        Game game = new Game(boardString, boardString);
+        Game game = new GameBuilder().setGameBoard(boardString).setSolvBoard(boardString).build();
         assert !game.isGameWon();
     }
 
@@ -29,7 +29,7 @@ public class GameTest {
     public void getCtrls_AllTest() {
         String boardString =
                 "                                                                                 ";
-        Game game = new Game(boardString, boardString);
+        Game game = new GameBuilder().setGameBoard(boardString).setSolvBoard(boardString).build();
         assert "1".equals(game.getCtrls().get(0));
         assert "2".equals(game.getCtrls().get(1));
         assert "3".equals(game.getCtrls().get(2));
@@ -45,7 +45,7 @@ public class GameTest {
     public void getCtrls_ClearedTest() {
         String boardString =
                 "12345678923456789134567891245678912356789123 678912345789123456891234567912345678";
-        Game game = new Game(boardString, boardString);
+        Game game = new GameBuilder().setGameBoard(boardString).setSolvBoard(boardString).build();
         assert " ".equals(game.getCtrls().get(0));
         assert " ".equals(game.getCtrls().get(1));
         assert " ".equals(game.getCtrls().get(2));

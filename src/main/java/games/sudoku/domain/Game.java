@@ -12,18 +12,10 @@ public class Game {
     private Board solvBoard;
     private ArrayList<String> ctrls;
 
-    public Game() {
-        this("", "");
-    }
-
-    public Game(String gameString, String solvString) {
-        this(0,gameString, solvString);
-    }
-
     public Game(Integer id, String gameString, String solvString) {
         this.id = id;
-        gameBoard = new Board(gameString);
-        solvBoard = new Board(solvString);
+        gameBoard = new Board().setBoard(gameString);
+        solvBoard = new Board().setBoard(solvString);
     }
 
     public ArrayList<String> getCtrls() {

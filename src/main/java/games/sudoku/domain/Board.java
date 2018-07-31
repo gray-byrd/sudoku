@@ -1,21 +1,29 @@
 package games.sudoku.domain;
 
 import lombok.Data;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
 @Data
 public class Board {
+    private  Integer size = 9;
     private String selected;
     private ArrayList<ArrayList<Cell>> board;
 
-    Board(String boardString) {
+    Board() {
         this.selected = "";
         this.board = new ArrayList<>();
-        IntStream.range(0,9).forEach(i -> board.add(new ArrayList<>()));
-        IntStream.range(0,81).forEach(i ->
-            board.get(i/9).add(new Cell(boardString.substring(i,++i))));
+        IntStream.range(0,size).forEach(i -> board.add(new ArrayList<>()));
+        IntStream.range(0,size*size).forEach(i ->
+                board.get(i/size).add(new Cell("")));
+    }
+
+    public Board setBoard(String boardString){
+        IntStream.range(0,size*size).forEach(i ->
+                board.get(i/size).get(i%size).setValue(boardString.substring(i,++i)));
+        return this;
     }
 
     public String getValue(int row, int col) {
@@ -51,7 +59,17 @@ public class Board {
                 if (value.equals(cell.getValue())) count++;
             }
         }
-        return count > 8;
+        return count == size;
+    }
+
+    public boolean allCleared() {
+        boolean cleared = true;
+        for (Integer value = 1; value <= size; value++) {
+            if (!this.cleared(value.toString())) {
+                cleared = false;
+            }
+        }
+        return cleared;
     }
 
     public boolean checkNeighbors(int row, int col, String value) {
@@ -61,7 +79,7 @@ public class Board {
     }
 
     private boolean checkRow(int row, int col, String value) {
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < size; i++) {
             if (getValue(row, i).equals(value) && !(i == col)) {
                 return true;
             }
@@ -70,7 +88,7 @@ public class Board {
     }
 
     private boolean checkCol(int row, int col, String value) {
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < size; i++) {
             if (getValue(i, col).equals(value) && !(i == row)) {
                 return true;
             }
@@ -80,11 +98,40 @@ public class Board {
 
     private boolean checkCell(int row, int col, String value) {
         for (int i = 0; i < 3; i++) {
-            if (getValue(row%3*3+i,col%3*3+i).equals(value)
-                    && !((row%3*3+i == row) && (col%3*3+i == col))) {
-                return true;
+            for (int j = 0; j < 3; j++) {
+                if (getValue(row/3*3+i,col/3*3+j).equals(value)
+                        && !((row/3*3+i == row) && (col/3*3+j == col))) {
+                    return true;
+                }
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "selected='" + selected + '\'' +
+                ", board=" + printBoard() +
+                '}';
+    }
+
+    private String printBoard () {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\n------------------------------------");
+        for (int i = 1; i <= size; i++) {
+            stringBuilder.append("\n|");
+            for (int j = 1; j <= size; j++) {
+                Cell cell = board.get(i - 1).get(j - 1);
+                stringBuilder.append(" ").append(StringUtils.isNotBlank(cell.getValue()) ? cell.getValue() : ".").append(" ");
+                if (j % 3 == 0) {
+                    stringBuilder.append(" | ");
+                }
+            }
+            if (i % 3 == 0) {
+                stringBuilder.append("\n------------------------------------");
+            }
+        }
+        return stringBuilder.toString();
     }
 }

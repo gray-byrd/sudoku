@@ -2,6 +2,7 @@ package games.sudoku.services;
 
 import games.sudoku.domain.BoardConstants;
 import games.sudoku.domain.Game;
+import games.sudoku.domain.GameBuilder;
 import games.sudoku.services.game.GameService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +19,9 @@ public class GameServiceTest {
 
     @Test
     public void saveGameTest() {
-        service.saveGame(new Game(BoardConstants.gameString, BoardConstants.solvString));
+        service.saveGame(new GameBuilder()
+                .setGameBoard(BoardConstants.gameString)
+                .setSolvBoard(BoardConstants.solvString).build());
         assert service.getGameCount() > 2;
         service.deleteGame(service.getNextGame().getId());
     }
@@ -49,15 +52,20 @@ public class GameServiceTest {
         Integer id = service.getNextGame().getId();
         service.deleteGame(id);
         assert !service.exists(id);
-        service.saveGame(new Game(BoardConstants.gameString, BoardConstants.solvString));
+        service.saveGame(new GameBuilder()
+                .setGameBoard(BoardConstants.gameString)
+                .setSolvBoard(BoardConstants.solvString).build());
     }
 
     @Test
     public void deleteAllGamesTest() {
         service.deleteAllGames();
         assert service.getGameCount() == 0;
-        service.saveGame(new Game(BoardConstants.gameString, BoardConstants.solvString));
-        service.saveGame(new Game(BoardConstants.gameString, BoardConstants.solvString));
+        GameBuilder gameBuilder = new GameBuilder()
+                .setGameBoard(BoardConstants.gameString)
+                .setSolvBoard(BoardConstants.solvString);
+        service.saveGame(gameBuilder.build());
+        service.saveGame(gameBuilder.build());
     }
 
     @Test

@@ -1,6 +1,7 @@
 package games.sudoku.services.game;
 
 import games.sudoku.domain.Game;
+import games.sudoku.domain.GameBuilder;
 import games.sudoku.services.game.entities.GameEntity;
 import games.sudoku.services.game.repos.GameRepository;
 import org.slf4j.Logger;
@@ -45,7 +46,7 @@ public class GameServiceImpl implements GameService {
             return convert(repo.findOne(id));
         } catch (Exception e) {
             LOGGER.error("ERROR Finding Game...", e);
-            return new Game();
+            return new GameBuilder().build();
         }
     }
 
@@ -113,7 +114,7 @@ public class GameServiceImpl implements GameService {
             return convert(repo.findAll().iterator().next());
         } catch (Exception e) {
             LOGGER.error("ERROR finding game...");
-            return new Game();
+            return new GameBuilder().build();
         }
     }
 

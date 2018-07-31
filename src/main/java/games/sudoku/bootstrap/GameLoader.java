@@ -1,6 +1,7 @@
 package games.sudoku.bootstrap;
 
-import games.sudoku.domain.GameFactory;
+import games.sudoku.domain.BoardConstants;
+import games.sudoku.domain.GameBuilder;
 import games.sudoku.services.game.GameService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,10 +25,16 @@ public class GameLoader implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
 
-        service.saveGame(GameFactory.generateGame());
+        service.saveGame(new GameBuilder()
+                .setGameBoard(BoardConstants.gameString)
+                .setSolvBoard(BoardConstants.solvString)
+                .build());
         LOGGER.info("Saved Game 1");
 
-        service.saveGame(GameFactory.generateGame());
+        service.saveGame(new GameBuilder()
+                .setGameBoard(BoardConstants.gameString)
+                .setSolvBoard(BoardConstants.solvString)
+                .build());
         LOGGER.info("Saved Game 2");
     }
 }
