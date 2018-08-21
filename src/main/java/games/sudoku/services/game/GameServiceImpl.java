@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,13 +29,15 @@ public class GameServiceImpl implements GameService {
     @Override
     public void saveGame(Game game) {
         LOGGER.debug("Calling game.saveGame...");
+        Instant start = Instant.now();
         try {
             GameEntity e = new GameEntity();
             e.setId(game.getId());
             e.setGameBoard(game.getGameBoard().getBoardString());
             e.setSolvBoard(game.getSolvBoard().getBoardString());
             repo.save(e);
-            LOGGER.debug("Game Saved");
+            LOGGER.debug("Game Saved in " +
+                    Duration.between(start, Instant.now()).toMillis());
         } catch (Exception e) {
             LOGGER.error("ERROR Saving Game...", e);
         }

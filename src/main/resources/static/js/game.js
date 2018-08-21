@@ -1,15 +1,19 @@
 $('.board-btn').on('click touchstart', function() {
     $('.board-btn').removeClass('active highlight');
     $(this).addClass('active');
-    if ($(this).html().trim().length > 0) {
-        $(".board-btn:contains('" + $(this).html().trim() + "')").addClass('highlight');
+    var cellValue = $(this).html().trim();
+    if (cellValue.length > 0) {
+        $(".board-btn:contains('" + cellValue + "')")
+            .addClass('highlight');
     }
 });
 
 $('.ctrl-btn').on('click touchstart', function() {
-    if ($('.board-btn.active').length
-        && $('.board-btn.active').html().trim().length <= 0
+    var activeButton = $('.board-btn.active');
+    if (activeButton.length
+        && activeButton.html().trim().length <= 0
         && $(this).html().trim().length > 0) {
-        window.location.replace("/play?"+ $('.board-btn.active').val() + $(this).val());
+        window.location.replace("/play?"
+            + activeButton.val() + $(this).val());
     }
 });

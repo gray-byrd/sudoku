@@ -20,14 +20,24 @@ body {
     font-size: 50px;
     text-decoration: none;
 }
-#header-text {
+#header-title {
     color: #627181;
     font-size: 30px;
     text-decoration: none;
 }
-#header-text-frame {
+#header-title-frame {
     float: left;
-    padding: 10px;
+    padding: 15px 10px 5px 10px;
+}
+#header-signin-link,
+#header-signup-link{
+    color: #627181;
+    font-size: 20px;
+    text-decoration: none;
+}
+#header-link-frame {
+    float: right;
+    padding: 20px 10px 0 10px;
 }
 #footer-container {
     padding: 20px;
@@ -58,6 +68,7 @@ body {
 }
 .board-btn,
 .ctrl-btn {
+    cursor: pointer;
     font-size: 30px;
     margin: 0;
     width: 50px;

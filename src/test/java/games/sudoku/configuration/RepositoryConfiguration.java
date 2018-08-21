@@ -8,8 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableAutoConfiguration
-@EntityScan(basePackages = {"games.sudoku.services.game.entities"})
-@EnableJpaRepositories(basePackages = {"games.sudoku.services.game.repos"})
+@EntityScan(basePackages = {"games.sudoku.services.*"})
+@EnableJpaRepositories(basePackages = {"games.sudoku.services.*"})
 @EnableTransactionManagement
-public class RepositoryConfiguration {
-}
+public class RepositoryConfiguration {}

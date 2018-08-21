@@ -1,3 +1,3 @@
-<div id="welcome-container">
+<nav id="welcome-container">
     <a href="/newgame">Play</a>
-</div>
+</nav>
