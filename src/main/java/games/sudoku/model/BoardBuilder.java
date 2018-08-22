@@ -1,6 +1,4 @@
-package games.sudoku.domain;
-
-import lombok.Data;
+package games.sudoku.model;
 
 import java.util.ArrayList;
 import java.util.Collections;

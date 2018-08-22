@@ -20,6 +20,10 @@
         </div>
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.mask.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.mask-password.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/validate.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/game.js"></script>
     </body>
 

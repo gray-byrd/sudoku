@@ -1,4 +1,4 @@
-package games.sudoku.domain;
+package games.sudoku.model;
 
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;

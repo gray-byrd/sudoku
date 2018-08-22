@@ -30,7 +30,8 @@ body {
     padding: 15px 10px 5px 10px;
 }
 #header-signin-link,
-#header-signup-link{
+#header-signup-link,
+#header-user-link {
     color: #627181;
     font-size: 20px;
     text-decoration: none;

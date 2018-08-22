@@ -1,6 +1,6 @@
 package games.sudoku.services.user;
 
-import games.sudoku.domain.User;
+import games.sudoku.model.User;
 
 import java.util.List;
 
@@ -13,5 +13,5 @@ public interface UserService {
     void delete(Integer id);
     void deleteAll();
     User next();
-    User findByUserName(String userName);
+    User findByEmail(String email);
 }

@@ -1,6 +1,6 @@
 package games.sudoku.services.user;
 
-import games.sudoku.domain.UserBuilder;
+import games.sudoku.model.UserBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,16 +17,16 @@ public class UserServiceTest {
     private UserService service;
 
     @Before
-    public void setuo() {
+    public void setUp() {
         service.save(new UserBuilder()
-                .setUserName("userName")
+                .setEmail("email")
                 .setPassword("password")
                 .build());
     }
 
     @After
-    public void teardown() {
-        service.deleteAll();;
+    public void tearDown() {
+        service.deleteAll();
     }
 
     @Test
@@ -36,8 +36,8 @@ public class UserServiceTest {
 
     @Test
     public void findTest() {
-        assert "userName".equals(service.find(
-                service.next().getId()).getUserName());
+        assert "email".equals(service.find(
+                service.next().getId()).getEmail());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class UserServiceTest {
     @Test
     public void getAllTest() {
         service.save(new UserBuilder()
-                .setUserName("userName2")
+                .setEmail("email2")
                 .setPassword("password")
                 .build());
         assert service.getAll().size() == service.count();
@@ -68,7 +68,7 @@ public class UserServiceTest {
     @Test
     public void deleteAllTest() {
         service.save(new UserBuilder()
-                .setUserName("userName2")
+                .setEmail("email2")
                 .setPassword("password")
                 .build());
         service.deleteAll();
@@ -81,7 +81,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void findByUserNameTest() {
-        assert service.exists(service.findByUserName("userName").getId());
+    public void findByEmailTest() {
+        assert service.exists(service.findByEmail("email").getId());
     }
 }

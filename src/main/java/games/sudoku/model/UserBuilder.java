@@ -1,13 +1,13 @@
-package games.sudoku.domain;
+package games.sudoku.model;
 
 public class UserBuilder {
 
     private Integer id;
-    private String userName;
+    private String email;
     private String password;
 
     public User build() {
-        return new User(id, userName, password);
+        return new User(id, email, password);
     }
 
     public UserBuilder setId(Integer id) {
@@ -15,8 +15,8 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder setUserName(String userName) {
-        this.userName = userName;
+    public UserBuilder setEmail(String email) {
+        this.email = email;
         return this;
     }
 

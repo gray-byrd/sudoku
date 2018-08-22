@@ -1,9 +1,9 @@
 package games.sudoku.services.game;
 
-import games.sudoku.domain.BoardConstants;
-import games.sudoku.domain.Game;
-import games.sudoku.domain.GameBuilder;
-import games.sudoku.services.game.GameService;
+import games.sudoku.model.BoardConstants;
+import games.sudoku.model.GameBuilder;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,59 +17,77 @@ public class GameServiceTest {
     @Autowired
     private GameService service;
 
+    @Before
+    public void setUp() {
+        service.save(new GameBuilder()
+                .setGameBoard(BoardConstants.gameString)
+                .setSolvBoard(BoardConstants.solvString)
+                .build());
+
+        service.save(new GameBuilder()
+                .setGameBoard(BoardConstants.gameString)
+                .setSolvBoard(BoardConstants.solvString)
+                .build());
+    }
+
+    @After
+    public void tearDown() {
+        service.deleteAll();
+    }
+
     @Test
     public void saveGameTest() {
-        service.saveGame(new GameBuilder()
+        service.save(new GameBuilder()
                 .setGameBoard(BoardConstants.gameString)
                 .setSolvBoard(BoardConstants.solvString).build());
-        assert service.getGameCount() > 2;
-        service.deleteGame(service.getNextGame().getId());
+        assert service.count() > 2;
+        service.delete(service.next().getId());
     }
 
     @Test
     public void findGameTest() {
-        assert BoardConstants.gameString.equals(service.findGame(
-                service.getNextGame().getId()).getGameBoard().getBoardString());
+        assert BoardConstants.gameString.equals(service.find(
+                service.next().getId()).getGameBoard().getBoardString());
     }
 
     @Test
     public void existsTest() {
-        assert service.exists(service.getNextGame().getId());
+        assert service.exists(service.next().getId());
     }
 
     @Test
     public void getAllGamesTest() {
-        assert service.getAllGames().size() == 2;
+        assert service.getAll().size() == 2;
     }
 
     @Test
     public void getGameCountTest() {
-        assert service.getGameCount() == 2;
+        assert service.count() == 2;
     }
 
     @Test
     public void deleteGameTest() {
-        Integer id = service.getNextGame().getId();
-        service.deleteGame(id);
+        Integer id = service.next().getId();
+        service.delete(id);
         assert !service.exists(id);
-        service.saveGame(new GameBuilder()
+        service.save(new GameBuilder()
                 .setGameBoard(BoardConstants.gameString)
                 .setSolvBoard(BoardConstants.solvString).build());
     }
 
     @Test
     public void deleteAllGamesTest() {
-        service.deleteAllGames();
-        assert service.getGameCount() == 0;
+        service.deleteAll();
+        assert service.count() == 0;
         GameBuilder gameBuilder = new GameBuilder()
                 .setGameBoard(BoardConstants.gameString)
                 .setSolvBoard(BoardConstants.solvString);
-        service.saveGame(gameBuilder.build());
-        service.saveGame(gameBuilder.build());
+        service.save(gameBuilder.build());
+        service.save(gameBuilder.build());
     }
 
     @Test
     public void getNextGameTest() {
-        assert service.getNextGame() != null;
+        assert service.next() != null;
     }
 }

@@ -1,6 +1,6 @@
 package games.sudoku.services.game.repos;
 
-import games.sudoku.domain.BoardConstants;
+import games.sudoku.model.BoardConstants;
 import games.sudoku.services.game.entities.GameEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;

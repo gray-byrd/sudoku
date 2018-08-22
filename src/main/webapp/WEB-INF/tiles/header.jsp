@@ -6,10 +6,8 @@
 </div>
 <div id="header-link-frame">
     <c:choose>
-        <c:when test="${logedIn}">
-            <a id="header-signup-link" href="/signup">sign up</a>
-            <span>or</span>
-            <a id="header-signin-link" href="/signin">sign in</a>
+        <c:when test="${loggedIn}">
+            <a id="header-user-link">${email}</a>
         </c:when>
         <c:otherwise>
             <a id="header-signup-link" href="/signup">sign up</a>

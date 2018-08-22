@@ -1,4 +1,4 @@
-package games.sudoku.domain;
+package games.sudoku.model;
 
 import lombok.Data;
 
@@ -6,12 +6,14 @@ import lombok.Data;
 public class User {
 
     private Integer id;
-    private String userName;
+    private String email;
     private String password;
 
-    User(Integer id, String userName, String password) {
+    User() {}
+
+    User(Integer id, String email, String password) {
         this.id = id;
-        this.userName = userName;
+        this.email = email;
         this.password = password;
     }
 }

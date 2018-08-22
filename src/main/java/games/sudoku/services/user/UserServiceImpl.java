@@ -1,7 +1,7 @@
 package games.sudoku.services.user;
 
-import games.sudoku.domain.User;
-import games.sudoku.domain.UserBuilder;
+import games.sudoku.model.User;
+import games.sudoku.model.UserBuilder;
 import games.sudoku.services.user.entities.UserEntity;
 import games.sudoku.services.user.repos.UserRepository;
 import org.slf4j.Logger;
@@ -146,12 +146,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUserName(String userName) {
+    public User findByEmail(String email) {
         Instant start = Instant.now();
         User user = new UserBuilder().build();
         LOGGER.debug("Looking for user...");
         try {
-            user = convertEntity(repo.findByUserName(userName));
+            user = convertEntity(repo.findByEmail(email));
             LOGGER.debug("User found in " +
                     Duration.between(start, Instant.now()).toMillis());
             return user;
@@ -164,7 +164,7 @@ public class UserServiceImpl implements UserService {
     private User convertEntity(UserEntity entity) {
         return new UserBuilder()
                 .setId(entity.getId())
-                .setUserName(entity.getUserName())
+                .setEmail(entity.getEmail())
                 .setPassword(entity.getPassword())
                 .build();
     }
@@ -172,7 +172,7 @@ public class UserServiceImpl implements UserService {
     private UserEntity convertObject(User user) {
         UserEntity entity = new UserEntity();
         entity.setId(user.getId());
-        entity.setUserName(user.getUserName());
+        entity.setEmail(user.getEmail());
         entity.setPassword(user.getPassword());
         return entity;
     }

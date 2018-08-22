@@ -1,16 +1,16 @@
 package games.sudoku.services.game;
 
-import games.sudoku.domain.Game;
+import games.sudoku.model.Game;
 
 import java.util.List;
 
 public interface GameService {
-    void saveGame(Game game);
-    Game findGame(Integer id);
+    void save(Game game);
+    Game find(Integer id);
     boolean exists(Integer id);
-    List<Game> getAllGames();
-    Integer getGameCount();
-    void deleteGame(Integer id);
-    void deleteAllGames();
-    Game getNextGame();
+    List<Game> getAll();
+    Integer count();
+    void delete(Integer id);
+    void deleteAll();
+    Game next();
 }

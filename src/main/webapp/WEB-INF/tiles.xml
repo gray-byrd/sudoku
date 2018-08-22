@@ -16,12 +16,24 @@
         <put-attribute name="body" value="/WEB-INF/tiles/welcome.jsp" />
     </definition>
 
+    <definition name="signup.tile" extends="layout.tile" >
+        <put-attribute name="body" value="/WEB-INF/tiles/signup.jsp" />
+    </definition>
+
+    <definition name="signin.tile" extends="layout.tile" >
+        <put-attribute name="body" value="/WEB-INF/tiles/signin.jsp" />
+    </definition>
+
     <definition name="game.tile" extends="layout.tile" >
         <put-attribute name="body" value="/WEB-INF/tiles/game.jsp" />
     </definition>
 
     <definition name="win.tile" extends="layout.tile" >
         <put-attribute name="body" value="/WEB-INF/tiles/win.jsp" />
+    </definition>
+
+    <definition name="error.tile" extends="layout.tile" >
+        <put-attribute name="body" value="/WEB-INF/tiles/error.jsp" />
     </definition>
 
 </tiles-definitions>

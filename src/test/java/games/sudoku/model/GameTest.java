@@ -1,4 +1,4 @@
-package games.sudoku.domain;
+package games.sudoku.model;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
 package games.sudoku.services.game;
 
-import games.sudoku.domain.Game;
-import games.sudoku.domain.GameBuilder;
+import games.sudoku.model.Game;
+import games.sudoku.model.GameBuilder;
 import games.sudoku.services.game.entities.GameEntity;
 import games.sudoku.services.game.repos.GameRepository;
 import org.slf4j.Logger;
@@ -27,8 +27,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void saveGame(Game game) {
-        LOGGER.debug("Calling game.saveGame...");
+    public void save(Game game) {
+        LOGGER.debug("Calling game.save...");
         Instant start = Instant.now();
         try {
             GameEntity e = new GameEntity();
@@ -44,8 +44,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game findGame(Integer id) {
-        LOGGER.debug("Calling game.findGame...");
+    public Game find(Integer id) {
+        LOGGER.debug("Calling game.find...");
         try {
             return convert(repo.findOne(id));
         } catch (Exception e) {
@@ -66,7 +66,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public List<Game> getAllGames() {
+    public List<Game> getAll() {
         LOGGER.debug("Calling game.gatAllGames...");
         List<Game> games = new ArrayList<>();
         try {
@@ -79,8 +79,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Integer getGameCount() {
-        LOGGER.debug("Calling game.getGameCount...");
+    public Integer count() {
+        LOGGER.debug("Calling game.count...");
         try {
             return (int) repo.count();
         } catch (Exception e) {
@@ -90,8 +90,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void deleteGame(Integer id) {
-        LOGGER.debug("Calling game.deleteGame...");
+    public void delete(Integer id) {
+        LOGGER.debug("Calling game.delete...");
         try {
             repo.delete(id);
             LOGGER.debug("Game Deleted");
@@ -101,8 +101,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void deleteAllGames() {
-        LOGGER.debug("Calling game.deleteAllGames...");
+    public void deleteAll() {
+        LOGGER.debug("Calling game.deleteAll...");
         try {
             repo.deleteAll();
             LOGGER.debug("All Games Deleted");
@@ -112,8 +112,8 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Game getNextGame() {
-        LOGGER.debug("Calling game.getNextGame...");
+    public Game next() {
+        LOGGER.debug("Calling game.next...");
         try {
             return convert(repo.findAll().iterator().next());
         } catch (Exception e) {

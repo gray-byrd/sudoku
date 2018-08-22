@@ -1,11 +1,13 @@
 package games.sudoku.controller;
 
-import games.sudoku.domain.Game;
+import games.sudoku.model.Game;
 import games.sudoku.services.game.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AppController {
@@ -25,17 +27,13 @@ public class AppController {
 
     @RequestMapping(value = "/newgame", method = RequestMethod.GET)
     public ModelAndView startNewGame() {
-        game = service.getNextGame();
-        return new ModelAndView("redirect:/game");
+        game = service.next();
+        return buildModel("game.tile");
     }
 
     @RequestMapping(value = "/game", method = RequestMethod.GET)
     public ModelAndView drawGame() {
-        ModelAndView modelAndView = new ModelAndView("game.tile");
-        modelAndView.addObject("board", game.getGameBoard().getBoard());
-        modelAndView.addObject("ctrls", game.getCtrls());
-        modelAndView.addObject("selected", game.getGameBoard().getSelected());
-        return modelAndView;
+        return buildModel("game.tile");
     }
 
     @RequestMapping(value = "/play", method = RequestMethod.GET)
@@ -47,11 +45,19 @@ public class AppController {
         } else {
             game.getGameBoard().setSelected("");
         }
-        return new ModelAndView((game.isGameWon()) ? "redirect:/win" : "redirect:/game");
+        return buildModel((game.isGameWon()) ? "win.tile" : "game.tile");
     }
 
     @RequestMapping(value = "/win", method = RequestMethod.GET)
     public ModelAndView showWin() {
         return new ModelAndView("win.tile");
+    }
+
+    private ModelAndView buildModel(String tile) {
+        ModelAndView modelAndView = new ModelAndView(tile);
+        modelAndView.addObject("board", game.getGameBoard().getBoard());
+        modelAndView.addObject("ctrls", game.getCtrls());
+        modelAndView.addObject("selected", game.getGameBoard().getSelected());
+        return modelAndView;
     }
 }

@@ -1,4 +1,4 @@
-package games.sudoku.domain;
+package games.sudoku.model;
 
 public class GameBuilder {
 

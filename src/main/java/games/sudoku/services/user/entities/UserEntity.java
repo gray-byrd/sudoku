@@ -19,6 +19,8 @@ public class UserEntity implements Serializable{
     private Integer version;
 
     @Column(unique = true)
-    private String userName;
+    private String email;
+
     private String password;
+
 }
